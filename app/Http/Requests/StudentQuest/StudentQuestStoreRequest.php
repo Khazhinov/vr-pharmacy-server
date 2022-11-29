@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Http\Requests\StudentQuest;
 
@@ -14,27 +14,27 @@ final class StudentQuestStoreRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'quest_id'  => [
+            'quest_id' => [
                 'required',
                 'string',
                 'exists:quests,id',
             ],
-            'group_id'  => [
+            'group_id' => [
                 'required',
                 'string',
                 'exists:groups,id',
             ],
-            'student_id'  => [
+            'student_id' => [
                 'required',
                 'string',
                 'exists:students,id',
             ],
-            'start_at'  => [
+            'start_at' => [
                 'required',
                 'string',
                 'date_format:Y-m-d H:i:s',
             ],
-            'end_at'  => [
+            'end_at' => [
                 'sometimes',
                 'nullable',
                 'string',
@@ -43,5 +43,3 @@ final class StudentQuestStoreRequest extends BaseRequest
         ];
     }
 }
-
-

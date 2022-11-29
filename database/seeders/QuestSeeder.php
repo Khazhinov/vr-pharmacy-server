@@ -2,12 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Group;
 use App\Models\Quest;
-use App\Models\User;
 use Exception;
 use Illuminate\Database\Seeder;
-use Khazhinov\LaravelLighty\Services\SystemUserPayloadService;
 
 class QuestSeeder extends Seeder
 {

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);
+
+declare(strict_types = 1);
 
 namespace App\Http\Controllers\Api\V1_0\Progress;
 
@@ -38,6 +39,7 @@ class ProgressController extends ApiController
         $quest = Quest::find($request->get('quest_id'));
 
         $result = [];
+        /** @phpstan-ignore-next-line */
         foreach ($group->students()->orderBy('full_name', 'ASC')->get() as $student) {
             /** @var StudentQuest $student_last_quest_session */
             $student_last_quest_session = $student->studentQuests()
@@ -61,7 +63,7 @@ class ProgressController extends ApiController
                 }
                 $student_last_quest_session_tasks_detail[] = [
                     'task_id' => $student_task_result->task_id,
-                    'task_name' => $student_task_result->task->name,
+                    'task_name' => $student_task_result->task->name, /** @phpstan-ignore-line */
                     'answer' => $student_task_result->answer,
                     'answered_at' => $student_task_result->created_at,
                 ];
@@ -72,7 +74,7 @@ class ProgressController extends ApiController
                 'student_full_name' => $student->full_name,
                 'quest_start_at' => $student_last_quest_session->start_at,
                 'quest_end_at' => $student_last_quest_session->end_at,
-                'quest_total_tasks_count' => $student_last_quest_session->quest->tasks()->count(),
+                'quest_total_tasks_count' => $student_last_quest_session->quest->tasks()->count(), /** @phpstan-ignore-line */
                 'quest_true_answer_count' => $true_count,
                 'quest_false_answer_count' => $false_count,
                 'tasks' => $student_last_quest_session_tasks_detail,

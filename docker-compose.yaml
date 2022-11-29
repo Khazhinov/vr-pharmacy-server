@@ -1,37 +1,37 @@
 version: '3.9'
 
 networks:
-  my-awesome-project-databases-network:
-    name: my-awesome-project-databases-network
+  vr-pharmacy-server-databases-network:
+    name: vr-pharmacy-server-databases-network
     driver: bridge
 
 volumes:
-  my-awesome-project-redis-volume:
-  my-awesome-project-postgres-database-volume:
-  my-awesome-project-postgres-home-volume:
+  vr-pharmacy-server-redis-volume:
+  vr-pharmacy-server-postgres-database-volume:
+  vr-pharmacy-server-postgres-home-volume:
 
 services:
   redis:
     image: redislabs/rejson:2.2.0
-    container_name: my-awesome-project-redis
+    container_name: vr-pharmacy-server-redis
     restart: always
     ports: ["6379:6379"]
     volumes:
-      - my-awesome-project-redis-volume:/data
+      - vr-pharmacy-server-redis-volume:/data
     networks:
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-databases-network
 
   postgres:
     image: postgres:12.9-alpine
-    container_name: my-awesome-project-postgres
+    container_name: vr-pharmacy-server-postgres
     restart: always
     ports: ["5432:5432"]
     environment:
-      POSTGRES_DB: my-awesome-project
-      POSTGRES_USER: my-awesome-project
-      POSTGRES_PASSWORD: my-awesome-project
+      POSTGRES_DB: vr-pharmacy-server
+      POSTGRES_USER: vr-pharmacy-server
+      POSTGRES_PASSWORD: vr-pharmacy-server
     volumes:
-      - my-awesome-project-postgres-database-volume:/var/lib/postgresql/data
-      - my-awesome-project-postgres-home-volume:/root
+      - vr-pharmacy-server-postgres-database-volume:/var/lib/postgresql/data
+      - vr-pharmacy-server-postgres-home-volume:/root
     networks:
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-databases-network

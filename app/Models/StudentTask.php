@@ -62,6 +62,9 @@ final class StudentTask extends Model implements UuidableContract
         'answer',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'answer' => 'boolean',
     ];

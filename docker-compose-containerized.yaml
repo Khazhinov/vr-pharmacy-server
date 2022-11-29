@@ -1,17 +1,17 @@
 version: '3.9'
 
 networks:
-  my-awesome-project-network:
-    name: my-awesome-project-network
+  vr-pharmacy-server-network:
+    name: vr-pharmacy-server-network
     driver: bridge
-  my-awesome-project-databases-network:
-    name: my-awesome-project-databases-network
+  vr-pharmacy-server-databases-network:
+    name: vr-pharmacy-server-databases-network
     driver: bridge
 
 volumes:
-  my-awesome-project-redis-volume:
-  my-awesome-project-postgres-database-volume:
-  my-awesome-project-postgres-home-volume:
+  vr-pharmacy-server-redis-volume:
+  vr-pharmacy-server-postgres-database-volume:
+  vr-pharmacy-server-postgres-home-volume:
 
 services:
   api:
@@ -20,15 +20,15 @@ services:
       dockerfile: docker/image/Dockerfile
       args:
         ENV: containerized
-    container_name: my-awesome-project-api
+    container_name: vr-pharmacy-server-api
     restart: always
     command: ["/app/docker/entrypoint/api.sh"]
-    ports: ["8000:80"]
+    ports: ["8001:80"]
     environment:
-      PHP_POOL_NAME: "my-awesome-project-api"
+      PHP_POOL_NAME: "vr-pharmacy-server-api"
     networks:
-      - my-awesome-project-network
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-network
+      - vr-pharmacy-server-databases-network
     depends_on:
       - redis
       - postgres
@@ -39,14 +39,14 @@ services:
       dockerfile: docker/image/Dockerfile
       args:
         ENV: containerized
-    container_name: my-awesome-project-task
+    container_name: vr-pharmacy-server-task
     restart: always
     command: ["/app/docker/entrypoint/task.sh"]
     environment:
-      PHP_POOL_NAME: "my-awesome-project-task"
+      PHP_POOL_NAME: "vr-pharmacy-server-task"
     networks:
-      - my-awesome-project-network
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-network
+      - vr-pharmacy-server-databases-network
     depends_on:
       - redis
       - postgres
@@ -57,39 +57,39 @@ services:
       dockerfile: docker/image/Dockerfile
       args:
         ENV: containerized
-    container_name: my-awesome-project-queue
+    container_name: vr-pharmacy-server-queue
     restart: always
     command: ["/app/docker/entrypoint/queue.sh"]
     environment:
-      PHP_POOL_NAME: "my-awesome-project-queue"
+      PHP_POOL_NAME: "vr-pharmacy-server-queue"
     networks:
-      - my-awesome-project-network
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-network
+      - vr-pharmacy-server-databases-network
     depends_on:
       - redis
       - postgres
 
   redis:
     image: redislabs/rejson:2.2.0
-    container_name: my-awesome-project-redis
+    container_name: vr-pharmacy-server-redis
     restart: always
     ports: ["6379:6379"]
     volumes:
-      - my-awesome-project-redis-volume:/data
+      - vr-pharmacy-server-redis-volume:/data
     networks:
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-databases-network
 
   postgres:
     image: postgres:14.5-alpine
-    container_name: my-awesome-project-postgres
+    container_name: vr-pharmacy-server-postgres
     restart: always
     ports: ["5432:5432"]
     environment:
-      POSTGRES_DB: my-awesome-project
-      POSTGRES_USER: my-awesome-project
-      POSTGRES_PASSWORD: my-awesome-project
+      POSTGRES_DB: vr-pharmacy-server
+      POSTGRES_USER: vr-pharmacy-server
+      POSTGRES_PASSWORD: vr-pharmacy-server
     volumes:
-      - my-awesome-project-postgres-database-volume:/var/lib/postgresql/data
-      - my-awesome-project-postgres-home-volume:/root
+      - vr-pharmacy-server-postgres-database-volume:/var/lib/postgresql/data
+      - vr-pharmacy-server-postgres-home-volume:/root
     networks:
-      - my-awesome-project-databases-network
+      - vr-pharmacy-server-databases-network

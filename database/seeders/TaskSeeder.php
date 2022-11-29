@@ -2,12 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Student;
 use App\Models\Task;
-use App\Models\User;
 use Exception;
 use Illuminate\Database\Seeder;
-use Khazhinov\LaravelLighty\Services\SystemUserPayloadService;
 
 class TaskSeeder extends Seeder
 {

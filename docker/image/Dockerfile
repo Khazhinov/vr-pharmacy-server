@@ -11,7 +11,7 @@ RUN apt-get update \
 
 # Инициализация базы данных
 RUN mkdir /db
-RUN /usr/bin/sqlite3 /db/my-awesome-project.db
+RUN /usr/bin/sqlite3 /db/vr-pharmacy-server.db
 
 # Копирование файлов проекта
 COPY . /app

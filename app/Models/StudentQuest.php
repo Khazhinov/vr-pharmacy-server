@@ -60,6 +60,9 @@ final class StudentQuest extends Model implements UuidableContract
         'end_at',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'start_at' => 'datetime',
         'end_at' => 'datetime',

@@ -2,20 +2,12 @@
 
 namespace App\OpenApi\Complexes\Progress;
 
-use App\OpenApi\Complexes\Auth\LoginAction\LoginActionArgumentsDTO;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Parameter;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\RequestBody;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
-use JsonException;
 use Khazhinov\LaravelFlyDocs\Generator\Factories\ComplexFactory;
 use Khazhinov\LaravelFlyDocs\Generator\Factories\ComplexFactoryResult;
-use Khazhinov\LaravelLighty\OpenApi\Complexes\Reflector\ModelReflector;
-use Khazhinov\LaravelLighty\OpenApi\Complexes\Reflector\RequestReflector;
 use Khazhinov\LaravelLighty\OpenApi\Complexes\Responses\ErrorResponse;
 use Khazhinov\LaravelLighty\OpenApi\Complexes\Responses\SuccessResponse;
-use ReflectionException;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 class ProgressGetActionComplex extends ComplexFactory
 {
