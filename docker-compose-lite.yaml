@@ -1,0 +1,27 @@
+version: '3.9'
+
+networks:
+  my-awesome-project-network:
+    name: my-awesome-project-network
+    driver: bridge
+
+volumes:
+  my-awesome-project-database-volume:
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/image/Dockerfile
+      args:
+        ENV: lite
+    container_name: my-awesome-project-api
+    restart: always
+    command: ["/app/docker/entrypoint/api.sh"]
+    ports: ["80:80"]
+    environment:
+      PHP_POOL_NAME: "my-awesome-project-api"
+    volumes:
+      - my-awesome-project-database-volume:/db
+    networks:
+      - my-awesome-project-network
