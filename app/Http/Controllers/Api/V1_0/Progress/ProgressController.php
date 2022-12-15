@@ -50,6 +50,10 @@ class ProgressController extends ApiController
                 ->first()
             ;
 
+            if (! $student_last_quest_session) {
+                continue;
+            }
+
             $student_last_quest_session_tasks_detail = [];
             $true_count = 0;
             $false_count = 0;
