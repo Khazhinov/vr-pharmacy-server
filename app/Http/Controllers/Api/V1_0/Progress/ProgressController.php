@@ -95,6 +95,15 @@ class ProgressController extends ApiController
         );
     }
 
+    /**
+     * Получение прогресса по всем кейсам студента по идентификатору студента.
+     *
+     * @param  ProgressGetByStudentRequest  $request
+     * @return Response
+     * @throws JsonException
+     * @throws ReflectionException
+     * @throws UnknownProperties
+     */
     #[OpenApi\Operation(tags: ['Progress'])]
     #[OpenApi\Complex(
         factory: ProgressGetByStudentActionComplex::class,
@@ -153,6 +162,7 @@ class ProgressController extends ApiController
             $this->buildActionResponseDTO(
                 data: [
                     'student_id' => $student->id,
+                    'student_full_name' => $student->full_name,
                     'group_id' => $student->group_id,
                     'student_quests' => $quest_results
                 ],
