@@ -36,6 +36,7 @@ Route::group([
         "as" => "progress.",
     ], static function () {
         Route::get("/get", "ProgressController@get")->name("get");
+        Route::get("/getByStudent", "ProgressController@getByStudent")->name("get_by_student");
     });
 
     #/api/v1.0/groups
