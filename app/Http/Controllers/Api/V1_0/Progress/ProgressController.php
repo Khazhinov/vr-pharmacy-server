@@ -54,6 +54,17 @@ class ProgressController extends ApiController
             ;
 
             if (! $student_last_quest_session) {
+                $result[] = [
+                    'student_id' => $student->id,
+                    'student_full_name' => $student->full_name,
+                    'quest_start_at' => null,
+                    'quest_end_at' => null,
+                    'quest_total_tasks_count' => 0, /** @phpstan-ignore-line */
+                    'quest_true_answer_count' => 0,
+                    'quest_false_answer_count' => 0,
+                    'tasks' => [],
+                ];
+
                 continue;
             }
 
