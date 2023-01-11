@@ -19,6 +19,11 @@ final class TaskUpdateRequest extends BaseRequest
                 'string',
                 'exists:quests,id',
             ],
+            'service_id' => [
+                'sometimes',
+                'string',
+                'max:255',
+            ],
             'name' => [
                 'sometimes',
                 'string',

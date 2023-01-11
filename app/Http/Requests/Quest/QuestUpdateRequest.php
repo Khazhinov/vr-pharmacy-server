@@ -19,6 +19,11 @@ final class QuestUpdateRequest extends BaseRequest
                 'string',
                 'max:255',
             ],
+            'service_id' => [
+                'sometimes',
+                'string',
+                'max:255',
+            ],
         ];
     }
 }

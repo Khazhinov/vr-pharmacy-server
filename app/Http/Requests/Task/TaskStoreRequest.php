@@ -19,6 +19,11 @@ final class TaskStoreRequest extends BaseRequest
                 'string',
                 'exists:quests,id',
             ],
+            'service_id' => [
+                'required',
+                'string',
+                'max:255',
+            ],
             'name' => [
                 'required',
                 'string',

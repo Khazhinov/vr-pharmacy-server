@@ -30,12 +30,13 @@ class ProgressGetByStudentActionComplex extends ComplexFactory
             SuccessResponse::build(
                 data: [
                     Schema::string('student_id')->description('Идентификатор студента'),
+                    Schema::string('student_full_name')->description('ФИО студента'),
                     Schema::string('group_id')->description('Идентификатор группы студента'),
                     Schema::array('student_quests')->description('Список прохождения кейсов')->items(
                         Schema::object()->properties(
                             Schema::string('student_quest_id')->description('Идентификатор прохождения кейса'),
                             Schema::string('quest_id')->description('Идентификатор кейса'),
-                            Schema::string('quest_id')->description('Идентификатор кейса'),
+                            Schema::string('quest_service_id')->description('Служебный идентификатор кейса'),
                             Schema::string('quest_start_at')->description('Время начала прохождения кейса'),
                             Schema::string('quest_end_at')->description('Время окончания прохождения кейса'),
                             Schema::integer('quest_total_tasks_count')->description('Общее количество заданий в кейсе'),
@@ -45,6 +46,7 @@ class ProgressGetByStudentActionComplex extends ComplexFactory
                                 ->items(
                                     Schema::object()->properties(
                                         Schema::string('task_id')->description('Идентификатор задания'),
+                                        Schema::string('task_service_id')->description('Служебный идентификатор задания'),
                                         Schema::string('task_name')->description('Название задания'),
                                         Schema::boolean('answer')->description('Ответ студента'),
                                         Schema::string('answered_at')->description('Время ответа студента'),

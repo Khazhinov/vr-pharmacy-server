@@ -29,6 +29,7 @@ class TaskResource extends SingleResource
         return [
             'id' => $this->resource->id,
             'quest_id' => $this->resource->quest_id,
+            'service_id' => $this->resource->service_id,
             'name' => $this->resource->name,
 
             // Для отношений, позволяет избегать проблемы N+1

@@ -92,7 +92,7 @@ class ProgressController extends ApiController
                 'student_full_name' => $student->full_name,
                 'quest_start_at' => $student_last_quest_session->start_at,
                 'quest_end_at' => $student_last_quest_session->end_at,
-                'quest_total_tasks_count' => $student_last_quest_session->quest->tasks()->count(), /** @phpstan-ignore-line */
+                'quest_total_tasks_count' => $student_last_quest_session->studentTasks()->count(), /** @phpstan-ignore-line */
                 'quest_true_answer_count' => $true_count,
                 'quest_false_answer_count' => $false_count,
                 'tasks' => $student_last_quest_session_tasks_detail,
@@ -121,11 +121,6 @@ class ProgressController extends ApiController
     )]
     public function getByStudent(ProgressGetByStudentRequest $request): Response
     {
-        /** @var Group $group */
-        $group = Group::find($request->get('group_id'));
-        /** @var Quest $quest */
-        $quest = Quest::find($request->get('quest_id'));
-
         /** @var Student $quest */
         $student = Student::find($request->get('student_id'));
 
@@ -152,6 +147,7 @@ class ProgressController extends ApiController
                 $student_last_quest_session_tasks_detail[] = [
                     'task_id' => $student_task_result->task_id,
                     'task_name' => $student_task_result->task->name, /** @phpstan-ignore-line */
+                    'task_service_id' => $student_task_result->task->service_id, /** @phpstan-ignore-line */
                     'answer' => $student_task_result->answer,
                     'answered_at' => $student_task_result->created_at,
                 ];
@@ -160,9 +156,10 @@ class ProgressController extends ApiController
             $quest_results[] = [
                 'student_quest_id' => $student_quest_session->id,
                 'quest_id' => $student_quest_session->quest_id,
+                'quest_service_id' => $student_quest_session->quest->service_id,
                 'quest_start_at' => $student_quest_session->start_at,
                 'quest_end_at' => $student_quest_session->end_at,
-                'quest_total_tasks_count' => $student_quest_session->quest->tasks()->count(),
+                'quest_total_tasks_count' => $student_quest_session->studentTasks()->count(),
                 'quest_true_answer_count' => $true_count,
                 'quest_false_answer_count' => $false_count,
                 'tasks' => $student_last_quest_session_tasks_detail,

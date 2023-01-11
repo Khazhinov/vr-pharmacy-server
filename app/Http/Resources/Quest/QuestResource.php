@@ -28,6 +28,7 @@ class QuestResource extends SingleResource
     {
         return [
             'id' => $this->resource->id,
+            'service_id' => $this->resource->service_id,
             'name' => $this->resource->name,
 
             // Для отношений, позволяет избегать проблемы N+1

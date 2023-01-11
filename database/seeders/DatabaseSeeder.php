@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupSeeder::class);
         $this->call(StudentSeeder::class);
         $this->call(QuestSeeder::class);
-        $this->call(TaskSeeder::class);
+//        $this->call(TaskSeeder::class);
         $this->call(ProgressSeeder::class);
     }
 }

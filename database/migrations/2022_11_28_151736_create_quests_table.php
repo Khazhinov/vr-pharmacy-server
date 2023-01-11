@@ -15,6 +15,7 @@ return new class() extends Migration {
         Schema::create('quests', function (Blueprint $table) {
             $table->uuid('id')->primary()->comment('Уникальный идентификатор кейса');
 
+            $table->string('service_id')->index()->comment('Служебный идентификатор кейса');
             $table->string('name')->index()->comment('Название кейса');
 
             $table->timestamp('created_at')->index()->comment('Временная метка создания записи');

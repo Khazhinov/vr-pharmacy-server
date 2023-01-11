@@ -16,7 +16,8 @@ return new class() extends Migration {
             $table->uuid('id')->primary()->comment('Уникальный идентификатор задачи');
             $table->uuid('quest_id')->index()->comment('Идентификатор кейса');
 
-            $table->string('name')->index()->comment('Название задачи');
+            $table->string('service_id')->index()->comment('Служебный идентификатор задачи');
+            $table->text('name')->comment('Название задачи');
 
             $table->timestamp('created_at')->index()->comment('Временная метка создания записи');
             $table->timestamp('updated_at')->nullable()->index()->comment('Временная метка изменения записи');

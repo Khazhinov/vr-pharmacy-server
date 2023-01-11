@@ -44,6 +44,7 @@ final class Task extends Model implements UuidableContract
 
     protected $fillable = [
         'quest_id',
+        'service_id',
         'name',
     ];
 

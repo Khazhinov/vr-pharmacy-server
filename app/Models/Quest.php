@@ -42,6 +42,7 @@ final class Quest extends Model implements UuidableContract
     use SoftDeletes;
 
     protected $fillable = [
+        'service_id',
         'name',
     ];
 

@@ -19,6 +19,11 @@ final class QuestStoreRequest extends BaseRequest
                 'string',
                 'max:255',
             ],
+            'service_id' => [
+                'required',
+                'string',
+                'max:255',
+            ],
         ];
     }
 }
