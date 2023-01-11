@@ -3,9 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 
 class ReformatQuestsData extends Command
 {
@@ -31,6 +28,5 @@ class ReformatQuestsData extends Command
      */
     public function handle()
     {
-
     }
 }

@@ -172,7 +172,7 @@ class ProgressController extends ApiController
                     'student_id' => $student->id,
                     'student_full_name' => $student->full_name,
                     'group_id' => $student->group_id,
-                    'student_quests' => $quest_results
+                    'student_quests' => $quest_results,
                 ],
             )
         );

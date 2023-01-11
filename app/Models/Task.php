@@ -16,6 +16,7 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
  *
  * @property string $id Уникальный идентификатор задачи
  * @property string $quest_id Идентификатор кейса
+ * @property string $service_id Служебный идентификатор задачи
  * @property string $name Название задачи
  * @property \Illuminate\Support\Carbon $created_at Временная метка создания записи
  * @property \Illuminate\Support\Carbon|null $updated_at Временная метка изменения записи
@@ -31,6 +32,7 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereQuestId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Task whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Task withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Task withoutTrashed()

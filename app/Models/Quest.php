@@ -15,6 +15,7 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
  * App\Models\Quest
  *
  * @property string $id Уникальный идентификатор кейса
+ * @property string $service_id Служебный идентификатор кейса
  * @property string $name Название кейса
  * @property \Illuminate\Support\Carbon $created_at Временная метка создания записи
  * @property \Illuminate\Support\Carbon|null $updated_at Временная метка изменения записи
@@ -30,6 +31,7 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Quest whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Quest whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Quest whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quest whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Quest whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Quest withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Quest withoutTrashed()
