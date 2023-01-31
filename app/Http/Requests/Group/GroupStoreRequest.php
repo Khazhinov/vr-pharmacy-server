@@ -19,6 +19,12 @@ final class GroupStoreRequest extends BaseRequest
                 'string',
                 'max:255',
             ],
+            'email' => [
+                'sometimes',
+                'string',
+                'max:255',
+                'email',
+            ],
         ];
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Resources\Group\GroupResource;
 use App\Models\Group;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as DatabaseBuilder;
+use Illuminate\Support\Facades\DB;
 use JsonException;
 use Khazhinov\LaravelFlyDocs\Generator\Attributes as OpenApi;
 use Khazhinov\LaravelLighty\Http\Controllers\Api\CRUD\ApiCRUDController;
@@ -263,7 +264,14 @@ final class GroupCRUDController extends ApiCRUDController
     protected function getQueryBuilder(): Builder|DatabaseBuilder
     {
         /** @var Builder|DatabaseBuilder $builder */
-        $builder = Group::query();
+        $builder = Group::query()
+            ->leftJoin('students', 'students.group_id', '=', 'groups.id')
+            ->select(
+                'groups.*',
+                DB::raw('count(students.id) as students_count')
+            )
+            ->groupBy('groups.id')
+        ;
 
         return $builder;
     }

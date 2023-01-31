@@ -19,6 +19,7 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
  * @property \Illuminate\Support\Carbon $created_at Временная метка создания записи
  * @property \Illuminate\Support\Carbon|null $updated_at Временная метка изменения записи
  * @property \Illuminate\Support\Carbon|null $deleted_at Временная метка удаления записи
+ * @property string|null $email Email адрес группы
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\StudentQuest[] $studentQuests
  * @property-read int|null $student_quests_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Student[] $students
@@ -30,6 +31,7 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Group query()
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Group whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedAt($value)
@@ -45,6 +47,7 @@ final class Group extends Model implements UuidableContract
 
     protected $fillable = [
         'name',
+        'email',
     ];
 
     /**

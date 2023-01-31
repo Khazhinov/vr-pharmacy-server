@@ -30,6 +30,8 @@ class GroupResource extends SingleResource
         return [
             'id' => $this->resource->id,
             'name' => $this->resource->name,
+            'email' => $this->resource->email,
+            'students_count' => $this->resource->students_count,
 
             // Для отношений, позволяет избегать проблемы N+1
             $this->mergeWhenByClosure($this->hasWith('relationships.students'), static function ($context) {
